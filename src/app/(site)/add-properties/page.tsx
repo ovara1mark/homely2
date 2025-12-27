@@ -1,59 +1,64 @@
 "use client";
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
-export default function AddProperty() {
-  const router = useRouter();
-  const [form, setForm] = useState({
-    name: "",
-    location: "",
-    rate: "",
-    beds: 0,
-    baths: 0,
-    area: 0,
-  });
-  const [images, setImages] = useState<File[]>([]);
+export default function AddPropertyPage() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: name === "beds" || name === "baths" || name === "area" ? Number(value) : value });
-  };
-
-  const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) setImages(Array.from(e.target.files));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  // ✅ Replace your old handleSubmit with this:
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (images.length === 0) return alert("Please select at least one image");
 
-    const formData = new FormData();
-    Object.entries(form).forEach(([key, value]) => formData.append(key, value.toString()));
-    images.forEach(file => formData.append("images", file));
+    const form = e.currentTarget as HTMLFormElement; // cast to HTMLFormElement
+    setLoading(true);
+    setSuccess(false);
 
-    const res = await fetch("/api/add-property", { method: "POST", body: formData });
+    const formData = new FormData(form);
+
+    const res = await fetch("/api/add-property", {
+      method: "POST",
+      body: formData,
+    });
 
     if (res.ok) {
-      alert("Property added successfully!");
-      router.push("/");
+      setSuccess(true);
+      form.reset(); // now safe
     } else {
       const data = await res.json();
       alert(data.error || "Failed to add property");
     }
+
+    setLoading(false);
   };
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Add Your Property</h1>
-      <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
-        <input name="name" placeholder="Name" onChange={handleChange} className="border p-2 w-full" required />
-        <input name="location" placeholder="Location" onChange={handleChange} className="border p-2 w-full" required />
-        <input name="rate" placeholder="Rate" onChange={handleChange} className="border p-2 w-full" required />
-        <input name="beds" type="number" placeholder="Beds" onChange={handleChange} className="border p-2 w-full" required />
-        <input name="baths" type="number" placeholder="Baths" onChange={handleChange} className="border p-2 w-full" required />
-        <input name="area" type="number" placeholder="Area" onChange={handleChange} className="border p-2 w-full" required />
-        <input type="file" multiple accept="image/*" onChange={handleFiles} className="border p-2 w-full" required />
-        <button type="submit" className="bg-blue-600 text-white p-2 w-full rounded">Add Property</button>
+    <div className="max-w-2xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Add Property</h1>
+      {success && <p className="text-green-600 mb-2">Property added successfully!</p>}
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input type="text" name="name" placeholder="Name" required className="border p-2" />
+        <input type="text" name="location" placeholder="Location" required className="border p-2" />
+        <input type="text" name="rate" placeholder="Rate" required className="border p-2" />
+        <input type="number" name="beds" placeholder="Beds" required className="border p-2" />
+        <input type="number" name="baths" placeholder="Baths" required className="border p-2" />
+        <input type="number" name="area" placeholder="Area" required className="border p-2" />
+        <select name="category" required className="border p-2">
+  <option value="">Select Category</option>
+  <option value="Office">Office</option>
+  <option value="Luxury Home">Luxury Home</option>
+  <option value="Villa">Villa</option>
+  <option value="Apartment">Apartment</option>
+</select>
+
+        <input type="file" name="images" multiple required className="border p-2" />
+        <button
+          type="submit"
+          className="bg-blue-600 text-white p-2 rounded disabled:opacity-50"
+          disabled={loading}
+        >
+          {loading ? "Adding..." : "Add Property"}
+        </button>
       </form>
     </div>
   );

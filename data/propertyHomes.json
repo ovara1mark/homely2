@@ -1,0 +1,59 @@
+[
+  {
+    "name": "estate",
+    "slug": "estate",
+    "location": "newyork",
+    "rate": "450000",
+    "beds": 2,
+    "baths": 3,
+    "area": 1213,
+    "images": [
+      {
+        "src": "/uploads/1766795619142-landing-call-to-action.jpg"
+      }
+    ]
+  },
+  {
+    "name": "estate",
+    "slug": "estate",
+    "location": "newyork",
+    "rate": "450000",
+    "beds": 3,
+    "baths": 4,
+    "area": 4,
+    "images": [
+      {
+        "src": "/uploads/1766795791366-landing-call-to-action.jpg"
+      }
+    ]
+  },
+  {
+    "name": "estate",
+    "slug": "estate",
+    "location": "newyork",
+    "rate": "450000",
+    "beds": 4,
+    "baths": 3,
+    "area": 35,
+    "images": [
+      {
+        "src": "/uploads/1766795966030-landing-call-to-action.jpg"
+      }
+    ]
+  },
+    {
+    "name": "Serenity height villas",
+    "slug": "serenity-height-villas",
+    "location": "15 s aurora ave, miami",
+    "rate": "570,000",
+    "beds": 4,
+    "baths": 3,
+    "area": 120,
+    "images": [
+      { "src": "/images/properties/property1/property1.jpg" },
+      { "src": "/images/properties/property1/image-2.jpg" },
+      { "src": "/images/properties/property1/image-3.jpg" },
+      { "src": "/images/properties/property1/image-4.jpg" }
+    ]
+  }
+]
