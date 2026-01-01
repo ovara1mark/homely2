@@ -1,46 +1,50 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
-import SocialSignIn from "../SocialSignIn";
-import toast, { Toaster } from 'react-hot-toast';
+
+import { useState, useContext } from "react";
+import { supabase } from "@/lib/supabase/browser";
+import toast, { Toaster } from "react-hot-toast";
 import AuthDialogContext from "@/app/context/AuthDialogContext";
 import Logo from "@/components/Layout/Header/BrandLogo/Logo";
+import { useRouter } from "next/navigation";
 
 const Signin = ({ signInOpen }: { signInOpen?: any }) => {
-  const { data: session } = useSession();
-  const [username, setUsername] = useState("admin");
-  const [password, setPassword] = useState("admin123");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const authDialog = useContext(AuthDialogContext);
-
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
-    const notify = () => toast('Here is your toast.');
     e.preventDefault();
-    const result = await signIn("credentials", {
-      redirect: false,
-      username,
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
       password,
     });
-    if (result?.error) {
-      setError(result.error);
-    }
-    if (result?.status === 200) {
-      setTimeout(() => {
-        signInOpen(false);
-      }, 1200);
-      authDialog?.setIsSuccessDialogOpen(true);
-      setTimeout(() => {
-        authDialog?.setIsSuccessDialogOpen(false);
-      }, 1100);
-    } else {
+
+    if (error) {
+      toast.error(error.message);
       authDialog?.setIsFailedDialogOpen(true);
-      setTimeout(() => {
-        authDialog?.setIsFailedDialogOpen(false);
-      }, 1100);
+      setTimeout(() => authDialog?.setIsFailedDialogOpen(false), 1200);
+      return;
     }
+
+    toast.success("Signed in successfully");
+    authDialog?.setIsSuccessDialogOpen(true);
+
+    setTimeout(() => {
+      authDialog?.setIsSuccessDialogOpen(false);
+      signInOpen?.(false); // ✅ only call if exists
+      router.push("/"); // ✅ redirect to homepage or dashboard
+    }, 1200);
+  };
+
+  const handleGoogleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
   };
 
   return (
@@ -49,62 +53,41 @@ const Signin = ({ signInOpen }: { signInOpen?: any }) => {
         <Logo />
       </div>
 
-      <SocialSignIn />
-
-      <span className="z-1 relative my-8 block text-center">
-        <span className="-z-1 absolute left-0 top-1/2 block h-px w-full bg-black/10 dark:bg-white/20"></span>
-        <span className="text-body-secondary relative z-10 inline-block bg-white px-3 text-base dark:bg-black">
-          OR
-        </span>
-        <Toaster />
-      </span>
+      <button
+        onClick={handleGoogleSignIn}
+        className="w-full mb-6 rounded-2xl bg-red-500 py-3 text-white"
+      >
+        Continue with Google
+      </button>
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-[22px]">
-          <input
-            type="text"
-            placeholder="Username"
-            required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full rounded-2xl border placeholder:text-gray-400 border-black/10 dark:border-white/20 border-solid bg-transparent px-5 py-3 text-base text-dark outline-none transition  focus:border-primary focus-visible:shadow-none dark:border-border_color dark:text-white dark:focus:border-primary"
-          />
-        </div>
-        <div className="mb-[22px]">
-          <input
-            type="password"
-            required
-            value={password}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-2xl border border-black/10 dark:border-white/20 border-solid bg-transparent px-5 py-3 text-base text-dark outline-none transition  focus:border-primary focus-visible:shadow-none dark:border-border_color dark:text-white dark:focus:border-primary"
-          />
-        </div>
-        <div className="mb-9">
-          <button
-            type="submit"
-            className="flex w-full cursor-pointer items-center justify-center rounded-2xl border border-primary bg-primary hover:bg-transparent hover:text-primary px-5 py-3 text-base text-white transition duration-300 ease-in-out "
-          >
-            Sign In
-          </button>
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="mb-4 w-full rounded-2xl border px-5 py-3"
+        />
 
-        </div>
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="mb-6 w-full rounded-2xl border px-5 py-3"
+        />
+
+        <button
+          type="submit"
+          className="w-full rounded-2xl bg-primary py-3 text-white"
+        >
+          Sign In
+        </button>
       </form>
 
-      <div className="text-center">
-        <Link
-          href="/"
-          className="mb-2 text-base text-dark hover:text-primary dark:text-white dark:hover:text-primary"
-        >
-          Forget Password?
-        </Link>
-      </div>
-      <p className="text-body-secondary text-base text-center">
-        Not a member yet?{" "}
-        <Link href="/" className="text-primary hover:underline">
-          Sign Up
-        </Link>
-      </p>
+      <Toaster />
     </>
   );
 };

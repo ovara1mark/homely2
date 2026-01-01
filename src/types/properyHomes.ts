@@ -1,4 +1,20 @@
-export type PropertyHomes = {
+export interface PropertyImage {
+  src: string;
+}
+
+export interface HighlightItem {
+  title: string;
+  description: string;
+  icon: string;
+  iconWhite?: string;
+}
+
+export interface AmenityItem {
+  icon: string;
+  label: string;
+}
+
+export interface PropertyHomes {
   name: string;
   slug: string;
   location: string;
@@ -6,11 +22,17 @@ export type PropertyHomes = {
   beds: number;
   baths: number;
   area: number;
-  images: { src: string }[];
-  category?: string; // ✅ new field
-};
 
+  images: PropertyImage[];
 
-interface PropertyImage {
-  src: string;
+  category?: string;
+
+  /* Highlights section */
+  highlights?: HighlightItem[];
+
+  /* Description paragraphs */
+  description?: string[];
+
+  /* Amenities */
+  amenities?: AmenityItem[];
 }

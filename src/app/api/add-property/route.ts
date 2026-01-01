@@ -3,8 +3,15 @@ import path from "path";
 import { NextResponse } from "next/server";
 import { PropertyHomes } from "@/types/properyHomes";
 
-export const config = {
-  runtime: "node", // needed to use fs
+export const config = { runtime: "node" };
+
+const AMENITIES_MAP = {
+  smartHome: { icon: "ph:aperture", label: "Smart Home Integration" },
+  spacious: { icon: "ph:chart-pie-slice", label: "Spacious Living Areas" },
+  energy: { icon: "ph:television-simple", label: "Energy Efficiency" },
+  light: { icon: "ph:sun", label: "Natural Light" },
+  security: { icon: "ph:video-camera", label: "Security Systems" },
+  outdoor: { icon: "ph:cloud", label: "Outdoor Spaces" },
 };
 
 export async function POST(req: Request) {
@@ -23,22 +30,58 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }
 
-    // Handle uploaded images
-    const imagesArray: { src: string }[] = [];
+    /* ---------- IMAGES (MAX 4) ---------- */
     const files = formData.getAll("images") as File[];
+    if (files.length > 4) {
+      return NextResponse.json({ error: "Maximum 4 images allowed" }, { status: 400 });
+    }
 
     const uploadDir = path.join(process.cwd(), "public/uploads");
     if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
+    const images: { src: string }[] = [];
+
     for (const file of files) {
-      const arrayBuffer = await file.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      const filename = Date.now() + "-" + file.name;
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const filename = `${Date.now()}-${file.name}`;
       fs.writeFileSync(path.join(uploadDir, filename), buffer);
-      imagesArray.push({ src: "/uploads/" + filename });
+      images.push({ src: `/uploads/${filename}` });
     }
 
-    // Generate slug
+    /* ---------- AMENITIES ---------- */
+    const amenitiesRaw = formData.getAll("amenities") as string[];
+    const amenities = amenitiesRaw
+      .map((key) => AMENITIES_MAP[key])
+      .filter(Boolean);
+
+    /* ---------- HIGHLIGHTS ---------- */
+    const highlights = [
+      {
+        title: "Property details",
+        description: formData.get("detail_property")?.toString() || "",
+        icon: "/images/SVGs/property-details.svg",
+        iconWhite: "/images/SVGs/property-details-white.svg",
+      },
+      {
+        title: "Smart home access",
+        description: formData.get("detail_smart")?.toString() || "",
+        icon: "/images/SVGs/smart-home-access.svg",
+        iconWhite: "/images/SVGs/smart-home-access-white.svg",
+      },
+      {
+        title: "Energy efficient",
+        description: formData.get("detail_energy")?.toString() || "",
+        icon: "/images/SVGs/energyefficient.svg",
+        iconWhite: "/images/SVGs/energyefficient-white.svg",
+      },
+    ];
+
+    /* ---------- DESCRIPTION ---------- */
+    const description = formData
+      .getAll("description")
+      .map((d) => d.toString())
+      .filter(Boolean);
+
     const slug = name.toLowerCase().replace(/\s+/g, "-");
 
     const newProperty: PropertyHomes = {
@@ -49,24 +92,28 @@ export async function POST(req: Request) {
       beds,
       baths,
       area,
-      images: imagesArray,
       category,
+      images,
+      highlights,
+      description,
+      amenities,
     };
 
-    // Save to JSON
+    /* ---------- SAVE ---------- */
     const dataDir = path.join(process.cwd(), "data");
     if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
 
-    const dataFile = path.join(dataDir, "propertyHomes.json");
-    if (!fs.existsSync(dataFile)) fs.writeFileSync(dataFile, JSON.stringify([]));
+    const filePath = path.join(dataDir, "propertyHomes.json");
+    const existing: PropertyHomes[] = fs.existsSync(filePath)
+      ? JSON.parse(fs.readFileSync(filePath, "utf8"))
+      : [];
 
-    const existing: PropertyHomes[] = JSON.parse(fs.readFileSync(dataFile, "utf8"));
     existing.push(newProperty);
-    fs.writeFileSync(dataFile, JSON.stringify(existing, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify(existing, null, 2));
 
     return NextResponse.json(newProperty, { status: 201 });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

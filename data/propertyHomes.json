@@ -1,59 +1,138 @@
 [
   {
-    "name": "estate",
-    "slug": "estate",
-    "location": "newyork",
-    "rate": "450000",
-    "beds": 2,
-    "baths": 3,
-    "area": 1213,
-    "images": [
-      {
-        "src": "/uploads/1766795619142-landing-call-to-action.jpg"
-      }
-    ]
-  },
-  {
-    "name": "estate",
-    "slug": "estate",
-    "location": "newyork",
+    "name": "Chambrulee",
+    "slug": "chambrulee",
+    "location": "USA, new jersey",
     "rate": "450000",
     "beds": 3,
-    "baths": 4,
-    "area": 4,
+    "baths": 2,
+    "area": 23,
+    "category": "villa",
     "images": [
       {
-        "src": "/uploads/1766795791366-landing-call-to-action.jpg"
+        "src": "/uploads/1767041513269-landing-i3.png"
+      },
+      {
+        "src": "/uploads/1767041513272-landing-i4.png"
+      },
+      {
+        "src": "/uploads/1767041513275-landing-i5.png"
+      },
+      {
+        "src": "/uploads/1767041513277-landing-i7.png"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Property details",
+        "description": "enjoy the ultimate in modern living with premium",
+        "icon": "/images/SVGs/property-details.svg",
+        "iconWhite": "/images/SVGs/property-details-white.svg"
+      },
+      {
+        "title": "Smart home access",
+        "description": " feature high-end fixtures, custom vanities, and elegant tiling.",
+        "icon": "/images/SVGs/smart-home-access.svg",
+        "iconWhite": "/images/SVGs/smart-home-access-white.svg"
+      },
+      {
+        "title": "Energy efficient",
+        "description": "Outdoor living is equally impressive",
+        "icon": "/images/SVGs/energyefficient.svg",
+        "iconWhite": "/images/SVGs/energyefficient-white.svg"
+      }
+    ],
+    "description": [
+      "Step inside to discover an open-concept layout that seamlessly connects the kitchen, dining, and living spaces. the gourmet kitchen is equipped with top-of-the-line appliances, sleek cabinetry, and a large island perfect for casual dining or meal prep. the sunlit living room offers floor-to-ceiling windows, creating a bright and airy atmosphere while providing stunning views of the outdoor space.\r\n\r\nThe primary suite serves as a private retreat with a spa-like ensuite bathroom and a spacious walk-in closet. each additional bedroom is thoughtfully designed with comfort and style in mind, offering ample space and modern finishes. the home’s three bathrooms feature high-end fixtures, custom vanities, and elegant tiling.",
+      "The primary suite serves as a private retreat with a spa-like ensuite bathroom and a spacious walk-in closet. each additional bedroom is thoughtfully designed with comfort and style in mind, offering ample space and modern finishes. the home’s three bathrooms feature high-end fixtures, custom vanities, and elegant tiling."
+    ],
+    "amenities": [
+      {
+        "icon": "ph:chart-pie-slice",
+        "label": "Spacious Living Areas"
+      },
+      {
+        "icon": "ph:television-simple",
+        "label": "Energy Efficiency"
+      },
+      {
+        "icon": "ph:sun",
+        "label": "Natural Light"
       }
     ]
   },
   {
-    "name": "estate",
-    "slug": "estate",
-    "location": "newyork",
-    "rate": "450000",
+    "name": "Royal Orchid Villa",
+    "slug": "royal-orchid-villa",
+    "location": "12 Emerald Heights, Los Angeles",
+    "rate": "590,000",
     "beds": 4,
-    "baths": 3,
-    "area": 35,
+    "baths": 2,
+    "area": 200,
+    "category": "Apartment",
     "images": [
       {
-        "src": "/uploads/1766795966030-landing-call-to-action.jpg"
+        "src": "/uploads/1767042458562-landing-splash.jpg"
+      },
+      {
+        "src": "/uploads/1767042458580-placeholder.jpg"
+      },
+      {
+        "src": "/uploads/1767042458585-singlelisting-2.jpg"
+      },
+      {
+        "src": "/uploads/1767042458592-singlelisting-3.jpg"
       }
-    ]
-  },
-    {
-    "name": "Serenity height villas",
-    "slug": "serenity-height-villas",
-    "location": "15 s aurora ave, miami",
-    "rate": "570,000",
-    "beds": 4,
-    "baths": 3,
-    "area": 120,
-    "images": [
-      { "src": "/images/properties/property1/property1.jpg" },
-      { "src": "/images/properties/property1/image-2.jpg" },
-      { "src": "/images/properties/property1/image-3.jpg" },
-      { "src": "/images/properties/property1/image-4.jpg" }
+    ],
+    "highlights": [
+      {
+        "title": "Property details",
+        "description": "One of the few homes in the area with a private pool.",
+        "icon": "/images/SVGs/property-details.svg",
+        "iconWhite": "/images/SVGs/property-details-white.svg"
+      },
+      {
+        "title": "Smart home access",
+        "description": "Easily check yourself in with a modern keypad system.",
+        "icon": "/images/SVGs/smart-home-access.svg",
+        "iconWhite": "/images/SVGs/smart-home-access-white.svg"
+      },
+      {
+        "title": "Energy efficient",
+        "description": "Built in 2025 with sustainable and smart-home features.",
+        "icon": "/images/SVGs/energyefficient.svg",
+        "iconWhite": "/images/SVGs/energyefficient-white.svg"
+      }
+    ],
+    "description": [
+      "Nestled in the heart of miami, the modern luxe villa at 20 s aurora ave offers a perfect blend of contemporary elegance and smart-home innovation. priced at $570000, this 560 ft² residence features 4 spacious bedrooms, 3 luxurious bathrooms, and expansive living areas designed for comfort and style. built in 2025, the home boasts energy-efficient systems, abundant natural light, and state-of-the-art security features. outdoor spaces include two stylish bar areas, perfect for entertaining 8+ guests. enjoy the ultimate in modern living with premium amenities and a prime location.",
+      "The primary suite serves as a private retreat with a spa-like ensuite bathroom and a spacious walk-in closet. each additional bedroom is thoughtfully designed with comfort and style in mind, offering ample space and modern finishes. the home’s three bathrooms feature high-end fixtures, custom vanities, and elegant tiling.\r\n\r\nOutdoor living is equally impressive, with a beautifully landscaped backyard, multiple lounge areas, and two fully equipped bar spaces."
+    ],
+    "amenities": [
+      {
+        "icon": "ph:aperture",
+        "label": "Smart Home Integration"
+      },
+      {
+        "icon": "ph:chart-pie-slice",
+        "label": "Spacious Living Areas"
+      },
+      {
+        "icon": "ph:television-simple",
+        "label": "Energy Efficiency"
+      },
+      {
+        "icon": "ph:sun",
+        "label": "Natural Light"
+      },
+      {
+        "icon": "ph:video-camera",
+        "label": "Security Systems"
+      },
+      {
+        "icon": "ph:cloud",
+        "label": "Outdoor Spaces"
+      }
     ]
   }
 ]

@@ -1,4 +1,5 @@
 'use client'
+
 import { navLinks } from '@/app/api/navlink'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
@@ -7,10 +8,12 @@ import NavLink from './Navigation/NavLink'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import { supabase } from '@/lib/supabase/browser'
 
 const Header: React.FC = () => {
   const [sticky, setSticky] = useState(false)
   const [navbarOpen, setNavbarOpen] = useState(false)
+  const [session, setSession] = useState<any>(null)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
 
@@ -35,6 +38,28 @@ const Header: React.FC = () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [handleScroll])
+
+  // Fetch Supabase session
+  useEffect(() => {
+    async function fetchSession() {
+      const { data } = await supabase.auth.getSession()
+      setSession(data.session)
+    }
+    fetchSession()
+
+    // Listen to auth changes
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+
+    return () => listener.subscription.unsubscribe()
+  }, [])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    setSession(null)
+    window.location.href = '/'
+  }
 
   const isHomepage = pathname === '/'
 
@@ -62,6 +87,7 @@ const Header: React.FC = () => {
               />
             </Link>
           </div>
+
           <div className='flex items-center gap-2 sm:gap-6'>
             <button
               className='hover:cursor-pointer'
@@ -85,6 +111,7 @@ const Header: React.FC = () => {
                 className='dark:block hidden text-white'
               />
             </button>
+
             <div className={`hidden md:block`}>
               <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
                 ? sticky
@@ -97,6 +124,7 @@ const Header: React.FC = () => {
                 +1-212-456-789
               </Link>
             </div>
+
             <div>
               <button
                 onClick={() => setNavbarOpen(!navbarOpen)}
@@ -117,11 +145,7 @@ const Header: React.FC = () => {
         </div>
       </nav>
 
-      {
-        navbarOpen && (
-          <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />
-        )
-      }
+      {navbarOpen && <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />}
 
       <div
         ref={sideMenuRef}
@@ -134,11 +158,7 @@ const Header: React.FC = () => {
                 onClick={() => setNavbarOpen(false)}
                 aria-label='Close mobile menu'
                 className='bg-white p-3 rounded-full hover:cursor-pointer'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                   <path
                     fill='none'
                     stroke='black'
@@ -150,37 +170,51 @@ const Header: React.FC = () => {
                 </svg>
               </button>
             </div>
+
             <nav className='flex flex-col items-start gap-4'>
               <ul className='w-full'>
                 {navLinks.map((item, index) => (
                   <NavLink key={index} item={item} onClick={() => setNavbarOpen(false)} />
                 ))}
+
+                {/* Auth buttons */}
                 <li className='flex items-center gap-4'>
-                  <Link href="/signin" className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'>
-                    Sign In
-                  </Link>
-                  <Link href="/" className='py-4 px-8 bg-transparent border border-primary text-base leading-4 block w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'>
-                    Sign up
-                  </Link>
+                  {session ? (
+                    <button
+                      onClick={handleSignOut}
+                      className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <>
+                      <Link
+                        href="/signin"
+                        className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'
+                      >
+                        Sign In
+                      </Link>
+                      <Link
+                        href="/signup"
+                        className='py-4 px-8 bg-transparent border border-primary text-base leading-4 block w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'
+                      >
+                        Sign Up
+                      </Link>
+                    </>
+                  )}
                 </li>
               </ul>
             </nav>
           </div>
 
           <div className='flex flex-col gap-1 my-16 text-white'>
-            <p className='text-base sm:text-xm font-normal text-white/40'>
-              Contact
-            </p>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              hello@homely.com
-            </Link>
-            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
-              +1-212-456-7890{' '}
-            </Link>
+            <p className='text-base sm:text-xm font-normal text-white/40'>Contact</p>
+            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>hello@homely.com</Link>
+            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>+1-212-456-7890</Link>
           </div>
         </div>
       </div>
-    </header >
+    </header>
   )
 }
 
