@@ -11,7 +11,7 @@ const page = () => {
     <>
       <HeroSub
         title="Residential Homes."
-        description="Experience elegance and comfort with our exclusive luxury  villas and more, designed for sophisticated living."
+        description="Experience elegance and comfort with our exclusive luxury  villas, designed for sophisticated living."
         badge="Properties"
       />
       <ResidentialList />
