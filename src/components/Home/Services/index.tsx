@@ -33,16 +33,16 @@ const Categories = () => {
               />
               Categories
             </p>
-            <h2 className="lg:text-52 text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
+            <h2 className="lg:text-52 text-36px w-full pr-1 md:text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
               Explore best properties with expert services.
             </h2>
-            <p className="text-dark/50 dark:text-white/50 text-lg lg:max-w-full leading-[1.3] md:max-w-3/4">
+            <p className="text-dark/50 w-full pr-1 dark:text-white/50 text-lg lg:max-w-full leading-[1.3] md:max-w-3/4">
               Discover a diverse range of premium properties, from luxurious
               apartments to spacious villas, tailored to your needs
             </p>
             <Link
               href="/properties"
-              className="py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
+              className="py-4 px-8 bg-primary text-base leading-4 block w-full text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
             >
               View properties
             </Link>
