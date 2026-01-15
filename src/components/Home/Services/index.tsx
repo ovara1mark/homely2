@@ -61,7 +61,7 @@ const Categories = () => {
               </Link>
               <Link
                 href="/residential-homes"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
               >
                 <Link href="/residential-homes">
                   <div className="flex justify-end mt-6 mr-6">
@@ -95,7 +95,7 @@ const Categories = () => {
               </Link>
               <Link
                 href="/luxury-villa"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
               >
                 <Link href="/luxury-villa">
                   <div className="flex justify-end mt-6 mr-6">
@@ -129,7 +129,7 @@ const Categories = () => {
               </Link>
               <Link
                 href="/appartment"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
               >
                 <Link href="/appartment">
                   <div className="flex justify-end mt-6 mr-6">
@@ -163,7 +163,7 @@ const Categories = () => {
               </Link>
               <Link
                 href="/office-spaces"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
               >
                 <Link href="/office-spaces">
                   <div className="flex justify-end mt-6 mr-6">
