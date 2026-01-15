@@ -27,17 +27,23 @@ const Categories = () => {
         <div className="grid grid-cols-12 items-center gap-10">
           <div className="lg:col-span-6 col-span-12">
             <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5">
-              <Icon icon="ph:house-simple-fill" className="text-2xl text-primary " />
+              <Icon
+                icon="ph:house-simple-fill"
+                className="text-2xl text-primary "
+              />
               Categories
             </p>
             <h2 className="lg:text-52 text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
-              Explore best properties
-              with expert services.
+              Explore best properties with expert services.
             </h2>
             <p className="text-dark/50 dark:text-white/50 text-lg lg:max-w-full leading-[1.3] md:max-w-3/4">
-              Discover a diverse range of premium properties, from luxurious apartments  to spacious villas, tailored to your needs
+              Discover a diverse range of premium properties, from luxurious
+              apartments to spacious villas, tailored to your needs
             </p>
-            <Link href="/properties" className="py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300">
+            <Link
+              href="/properties"
+              className="py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
+            >
               View properties
             </Link>
           </div>
@@ -53,18 +59,23 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link href="/residential-homes" className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500">
-                <div className="flex justify-end mt-6 mr-6">
-                  <div className="bg-white text-dark rounded-full w-fit p-4">
-                    <Icon icon="ph:arrow-right" width={24} height={24} />
+              <Link
+                href="/residential-homes"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+              >
+                <Link href="/residential-homes">
+                  <div className="flex justify-end mt-6 mr-6">
+                    <div className="bg-white text-dark rounded-full w-fit p-4">
+                      <Icon icon="ph:arrow-right" width={24} height={24} />
+                    </div>
                   </div>
-                </div>
+                </Link>
+
                 <div className="flex flex-col gap-2.5">
-                  <h3 className="text-white text-2xl">
-                    Residential Homes
-                  </h3>
+                  <h3 className="text-white text-2xl">Residential Homes</h3>
                   <p className="text-white/80 text-base leading-6">
-                    Experience elegance and comfort with our exclusive luxury villas, designed  for sophisticated living.
+                    Step into a residential home where elegance meets comfort,
+                    designed for modern living.{" "}
                   </p>
                 </div>
               </Link>
@@ -82,19 +93,24 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link href="/luxury-villa" className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500">
-                <div className="flex justify-end mt-6 mr-6">
-                  <div className="bg-white text-dark rounded-full w-fit p-4">
-                    <Icon icon="ph:arrow-right" width={24} height={24} />
+              <Link
+                href="/luxury-villa"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+              >
+                <Link href="/luxury-villa">
+                  <div className="flex justify-end mt-6 mr-6">
+                    <div className="bg-white text-dark rounded-full w-fit p-4">
+                      <Icon icon="ph:arrow-right" width={24} height={24} />
+                    </div>
                   </div>
-                </div>
+                </Link>
+
                 <div className="flex flex-col gap-2.5">
-                  <h3 className="text-white text-2xl">
-                    Luxury villas
-                  </h3>
+                  <h3 className="text-white text-2xl">Luxury villas</h3>
                   <p className="text-white/80 text-base leading-6">
-                    Experience elegance and comfort with our exclusive luxury villas, designed for sophisticated living.
-                  </p>
+                    Step into a villa that’s more than a home, a residential
+                    home built for luxury, space, and sophistication.{" "}
+                  </p>{" "}
                 </div>
               </Link>
             </div>
@@ -111,18 +127,23 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link href="/appartment" className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500">
-                <div className="flex justify-end mt-6 mr-6">
-                  <div className="bg-white text-dark rounded-full w-fit p-4">
-                    <Icon icon="ph:arrow-right" width={24} height={24} />
+              <Link
+                href="/appartment"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+              >
+                <Link href="/appartment">
+                  <div className="flex justify-end mt-6 mr-6">
+                    <div className="bg-white text-dark rounded-full w-fit p-4">
+                      <Icon icon="ph:arrow-right" width={24} height={24} />
+                    </div>
                   </div>
-                </div>
+                </Link>
+
                 <div className="flex flex-col gap-2.5">
-                  <h3 className="text-white text-2xl">
-                    Appartment
-                  </h3>
+                  <h3 className="text-white text-2xl">Apartment</h3>
                   <p className="text-white/80 text-base leading-6">
-                    Experience elegance and comfort with our exclusive luxury villas, designed  for sophisticated living.
+                    Experience modern apartment living, a home designed for
+                    comfort, style, and city life.{" "}
                   </p>
                 </div>
               </Link>
@@ -140,18 +161,23 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link href="/office-spaces" className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500">
-                <div className="flex justify-end mt-6 mr-6">
-                  <div className="bg-white text-dark rounded-full w-fit p-4">
-                    <Icon icon="ph:arrow-right" width={24} height={24} />
+              <Link
+                href="/office-spaces"
+                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 group-hover:top-0 duration-500"
+              >
+                <Link href="/office-spaces">
+                  <div className="flex justify-end mt-6 mr-6">
+                    <div className="bg-white text-dark rounded-full w-fit p-4">
+                      <Icon icon="ph:arrow-right" width={24} height={24} />
+                    </div>
                   </div>
-                </div>
+                </Link>
+
                 <div className="flex flex-col gap-2.5">
-                  <h3 className="text-white text-2xl">
-                    Office Spaces
-                  </h3>
+                  <h3 className="text-white text-2xl">Office Spaces</h3>
                   <p className="text-white/80 text-base leading-6">
-                    Experience elegance and comfort with our exclusive luxury villas, designed  for sophisticated living.
+                    Redefine your office experience: functional, modern, and
+                    with the warmth of a residential home.{" "}
                   </p>
                 </div>
               </Link>

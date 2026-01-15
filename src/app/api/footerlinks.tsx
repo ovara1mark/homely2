@@ -6,6 +6,5 @@ export const FooterLinks: footerlinks[] = [
     { label: 'Apartments', href: '/appartment' },
     { label: 'Contact Us', href: '/contactus' },
     { label: 'Blog', href: '/blogs' },
-    { label: '404 Page', href: '/not-found' },
-    { label: 'Documentation', href: '/documentation' },
+
 ]

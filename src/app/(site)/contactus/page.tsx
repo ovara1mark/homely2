@@ -59,7 +59,7 @@ export default function ContactUs() {
                 <div className='flex items-center gap-4 group w-fit'>
                   <Icon icon={'ph:phone'} width={32} height={32} />
                   <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>
-                    +1 0239 0310 1122
+                   +1-212-456-789
                   </p>
                 </div>
               </Link>
@@ -67,16 +67,11 @@ export default function ContactUs() {
                 <div className='flex items-center gap-4 group w-fit'>
                   <Icon icon={'ph:envelope-simple'} width={32} height={32} />
                   <p className='text-sm xs:text-base mobile:text-xm font-normal group-hover:text-primary'>
-                    support@gleamer.com
+                    support@homely.com
                   </p>
                 </div>
               </Link>
-              <div className='flex items-center gap-4'>
-                <Icon icon={'ph:map-pin'} width={32} height={32} />
-                <p className='text-sm xs:text-base mobile:text-xm font-normal'>
-                  Blane Street, Manchester
-                </p>
-              </div>
+             
             </div>
           </div>
           <div className='flex-1/2'>
