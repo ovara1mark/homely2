@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Categories = () => {
   return (
-    <section className="relative w-full pr-10 md:pr-5">
+    <section className="relative w-full md:pr-5">
       <div className="absolute left-0 top-0">
         <Image
           src="/images/categories/Vector.svg"
@@ -24,7 +24,7 @@ const Categories = () => {
         />
       </div>
       <div className="container max-w-8xl mx-auto px-5 2xl:px-0 relative z-10">
-        <div className="grid grid-cols-12 items-center gap-10">
+        <div className="grid grid-cols-12 items-center gap-5 md:gap-10">
           <div className="lg:col-span-6 col-span-12">
             <p className="text-dark/75 dark:text-white/75 text-base font-semibold flex gap-2.5">
               <Icon
@@ -33,7 +33,7 @@ const Categories = () => {
               />
               Categories
             </p>
-            <h2 className="lg:text-52  w-full pr-1 text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
+            <h2 className="lg:text-52  w-full pr-1 text-[35px] md:text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
               Explore best properties with expert services.
             </h2>
             <p className="text-dark/50 w-full pr-1 dark:text-white/50 text-lg lg:max-w-full leading-[1.3] md:max-w-3/4">
@@ -42,7 +42,7 @@ const Categories = () => {
             </p>
             <Link
               href="/properties"
-              className="py-4 px-1 md:py-4 md:px-8 bg-primary text-base leading-4 block md:w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
+              className="py-4 px-1 w-[200px] text-center md:py-4 md:px-8 bg-primary md:text-base leading-4 block md:w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
             >
               View properties
             </Link>
