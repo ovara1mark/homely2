@@ -192,14 +192,14 @@ const Header: React.FC = () => {
                       <Link
                         href="/signin"
                          onClick={() => setNavbarOpen(false)}
-                        className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'
+                        className='py-4 px-1 text-center md:px-8 bg-primary text-base leading-4 block w-[100px] md:w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'
                       >
                         Sign In
                       </Link>
                       <Link
                         href="/signup"
                          onClick={() => setNavbarOpen(false)}
-                        className='py-4 px-8 bg-transparent border border-primary text-base leading-4 block w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'
+                        className='py-4 px-1 text-center md:px-8 bg-transparent border border-primary text-base leading-4 block w-[100px] md:w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'
                       >
                         Sign Up
                       </Link>
