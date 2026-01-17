@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Categories = () => {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden pr-5">
       <div className="absolute left-0 top-0">
         <Image
           src="/images/categories/Vector.svg"
@@ -33,7 +33,7 @@ const Categories = () => {
               />
               Categories
             </p>
-            <h2 className="lg:text-52 text-36px w-full pr-1 md:text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
+            <h2 className="lg:text-52  w-full pr-1 text-40 mt-4 mb-2 lg:max-w-full font-medium leading-[1.2] text-dark dark:text-white">
               Explore best properties with expert services.
             </h2>
             <p className="text-dark/50 w-full pr-1 dark:text-white/50 text-lg lg:max-w-full leading-[1.3] md:max-w-3/4">
@@ -42,7 +42,7 @@ const Categories = () => {
             </p>
             <Link
               href="/properties"
-              className="py-4 px-8 bg-primary text-base leading-4 block w-full text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
+              className="py-4 px-3 md:py-4 md:px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
             >
               View properties
             </Link>
@@ -59,17 +59,14 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link
-                href="/residential-homes"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
-              >
-                <Link href="/residential-homes">
-                  <div className="flex justify-end mt-6 mr-6">
+              <div className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 lg:top-full flex flex-col justify-between pl-10 pb-10 top-0 lg:group-hover:top-0 md:duration-500">
+                <div className="flex justify-end mt-6 mr-6">
+                  <Link href="/residential-homes">
                     <div className="bg-white text-dark rounded-full w-fit p-4">
                       <Icon icon="ph:arrow-right" width={24} height={24} />
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
 
                 <div className="flex flex-col gap-2.5">
                   <h3 className="text-white text-2xl">Residential Homes</h3>
@@ -78,7 +75,7 @@ const Categories = () => {
                     designed for modern living.{" "}
                   </p>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
           <div className="lg:col-span-6 col-span-12">
@@ -93,17 +90,14 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link
-                href="/luxury-villa"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
-              >
-                <Link href="/luxury-villa">
-                  <div className="flex justify-end mt-6 mr-6">
+              <div className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 lg:top-full flex flex-col justify-between pl-10 pb-10 top-0 lg:group-hover:top-0 md:duration-500">
+                <div className="flex justify-end mt-6 mr-6">
+                  <Link href="/luxury-villa">
                     <div className="bg-white text-dark rounded-full w-fit p-4">
                       <Icon icon="ph:arrow-right" width={24} height={24} />
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
 
                 <div className="flex flex-col gap-2.5">
                   <h3 className="text-white text-2xl">Luxury villas</h3>
@@ -112,7 +106,7 @@ const Categories = () => {
                     home built for luxury, space, and sophistication.{" "}
                   </p>{" "}
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
           <div className="lg:col-span-3 col-span-6">
@@ -127,17 +121,14 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link
-                href="/appartment"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
-              >
-                <Link href="/appartment">
-                  <div className="flex justify-end mt-6 mr-6">
+              <div className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 lg:top-full flex flex-col justify-between pl-10 pb-10 top-0 lg:group-hover:top-0 md:duration-500">
+                <div className="flex justify-end mt-6 mr-6">
+                  <Link href="/appartment">
                     <div className="bg-white text-dark rounded-full w-fit p-4">
                       <Icon icon="ph:arrow-right" width={24} height={24} />
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
 
                 <div className="flex flex-col gap-2.5">
                   <h3 className="text-white text-2xl">Apartment</h3>
@@ -146,7 +137,7 @@ const Categories = () => {
                     comfort, style, and city life.{" "}
                   </p>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
           <div className="lg:col-span-3 col-span-6">
@@ -161,17 +152,14 @@ const Categories = () => {
                   unoptimized={true}
                 />
               </Link>
-              <Link
-                href="/office-spaces"
-                className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 top-full flex flex-col justify-between pl-10 pb-10 lg:group-hover:top-0 duration-500"
-              >
-                <Link href="/office-spaces">
-                  <div className="flex justify-end mt-6 mr-6">
+              <div className="absolute w-full h-full bg-gradient-to-b from-black/0 to-black/80 lg:top-full flex flex-col justify-between pl-10 pb-10 top-0 lg:group-hover:top-0 md:duration-500">
+                <div className="flex justify-end mt-6 mr-6">
+                  <Link href="/office-spaces">
                     <div className="bg-white text-dark rounded-full w-fit p-4">
                       <Icon icon="ph:arrow-right" width={24} height={24} />
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
 
                 <div className="flex flex-col gap-2.5">
                   <h3 className="text-white text-2xl">Office Spaces</h3>
@@ -180,7 +168,7 @@ const Categories = () => {
                     with the warmth of a residential home.{" "}
                   </p>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
         </div>
