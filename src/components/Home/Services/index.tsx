@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Categories = () => {
   return (
-    <section className="relative w-full pr-5">
+    <section className="relative w-full pr-10 md:pr-5">
       <div className="absolute left-0 top-0">
         <Image
           src="/images/categories/Vector.svg"
@@ -42,7 +42,7 @@ const Categories = () => {
             </p>
             <Link
               href="/properties"
-              className="py-4 px-3 md:py-4 md:px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
+              className="py-4 px-1 md:py-4 md:px-8 bg-primary text-base leading-4 block md:w-fit text-white rounded-full font-semibold mt-8 hover:bg-dark duration-300"
             >
               View properties
             </Link>
